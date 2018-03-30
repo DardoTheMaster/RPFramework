@@ -18,10 +18,7 @@ _medics = []call Client_fnc_getMedics;
 	[0, getPlayerUID _unit, getPos _unit] remoteExecCall ["ClientModules_fnc_basicMedicalMarker", _x];
 }forEach _medics;
 
-_escEH = [1,
-{
-		true;
-}] call Client_fnc_addHotkey;
+_escEH = [1,true] call Client_fnc_addHotkey;
 
 _cash = _unit getVariable "cash";
 [_cash]call Client_fnc_removeCash;
@@ -37,7 +34,7 @@ for "_i" from 0 to 1 step 0 do {
 
 if (!(_unit getVariable ["unconscious",  false])) then {
 	[1, player, _deadLoadout]call ClientModules_fnc_basicMedicalLoadout;
-	
+
 	player setPos (getPos _unit);
 	player setDir (getDir _unit);
 } else {
